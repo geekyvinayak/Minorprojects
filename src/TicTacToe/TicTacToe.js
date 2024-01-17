@@ -56,7 +56,7 @@ function TicTacToe() {
       }
     }
 
-    if (boxes.every((ele) => ele != "") && winner !=="Pending") {
+    if (boxes.every((ele) => ele != "") && winner !== "Pending") {
       setWinner("TIE");
       setgameOver(true);
       return;
@@ -68,9 +68,9 @@ function TicTacToe() {
       let temp = boxes.map((ele, i) => (i === index ? turn : ele));
       setBoxes(temp);
       handelTurn();
-      setinvalid([])
+      setinvalid([]);
     } else {
-      setinvalid([index])
+      setinvalid([index]);
     }
   };
 
@@ -95,10 +95,9 @@ function TicTacToe() {
                 background: winningset.includes(index)
                   ? "lightgreen" // Give priority to winning boxes
                   : invalid.includes(index)
-                    ? "red"
-                    : null,
+                  ? "red"
+                  : null,
               }}
-        
               onClick={() => {
                 if (!gameOver) {
                   handelBoxClick(ele, index);
