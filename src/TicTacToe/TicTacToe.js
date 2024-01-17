@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import "./App.css";
 import "./TicTacToe.css";
+import ConfettiExplosion from "react-confetti-explosion";
 
 function TicTacToe() {
   const [boxes, setBoxes] = useState(["", "", "", "", "", "", "", "", ""]);
@@ -112,6 +113,7 @@ function TicTacToe() {
       </div>
       {gameOver && (
         <div className="game-over">
+          <ConfettiExplosion particleCount={200} />
           Winner: {winner} <br></br>
           <button onClick={newGame}>Reset</button>
         </div>
