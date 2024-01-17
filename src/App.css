@@ -1,10 +1,54 @@
 .App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
   text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.box{
+  border: 2px solid #000000;
+  width: 30%;
+  display: flex;
+  height: 30%;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+
+.points-div {
+  /* Base styling */
+  font-family: sans-serif; /* Use a clear font */
+  font-size: 16px; /* Set a comfortable font size */
+  padding: 10px; /* Add some padding for visual spacing */
+  border-radius: 5px; /* Soften the edges */
+  background-color: #f5f5f5; /* Set a light gray background */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+
+  /* Text styling */
+  color: #333; /* Set the text color to dark gray */
+  text-align: center; /* Center the points within the div */
+
+  /* Highlight the points with color */
+  span {
+    color: #007bff; /* Make the points blue */
+    font-weight: bold; /* Add emphasis */
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width:250px;
+  height: 250px;
+  flex-wrap: wrap;
 }
 
 @media (prefers-reduced-motion: no-preference) {
