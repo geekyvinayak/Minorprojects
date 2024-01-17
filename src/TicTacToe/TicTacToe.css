@@ -64,8 +64,45 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 5px;
   }
   
   .game-over button:hover {
     background-color: #0069d9; /* Darker blue on hover */
   }
+
+  .game-over {
+    text-align: center; /* Center the content */
+    margin-top: 20px; /* Add spacing for visual separation */
+    font-size: 20px; /* Set a noticeable font size */
+    font-weight: bold; /* Add emphasis */
+  
+    /* Animation for winner reveal */
+    animation: reveal-winner 0.5s ease-in-out;
+  }
+  
+  @keyframes reveal-winner {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Winner text */
+  .game-over span {
+    color: #007bff; /* Emphasize the winner in blue */
+  }
+  
+  /* Reset button */
+  .game-over button {
+    background-color: #f0f0f0; /* Light gray background */
+    color: #333; /* Dark gray text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    /* Hover effect */
+    &:hover {
+      background-color: #e0e0e0; /* Darker gray on hover */
+    }
+  }
+  

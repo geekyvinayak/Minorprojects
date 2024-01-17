@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 // import "./App.css";
 import "./TicTacToe.css";
 
-
 function TicTacToe() {
   const [boxes, setBoxes] = useState(["", "", "", "", "", "", "", "", ""]);
   const [xpoints, setxpoints] = useState(0);
@@ -11,6 +10,7 @@ function TicTacToe() {
   const [winner, setWinner] = useState("Pending");
   const [gameOver, setgameOver] = useState(false);
   const [turn, setTurn] = useState("X");
+  const [invalid, setinvalid] = useState([]);
 
   const handelTurn = () => {
     if (turn === "X") {
@@ -40,11 +40,7 @@ function TicTacToe() {
   };
 
   const checkWinner = () => {
-    if (boxes.every((ele) => ele != "")) {
-      setWinner("TIE");
-      setgameOver(true);
-      return;
-    }
+    
 
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
@@ -59,6 +55,12 @@ function TicTacToe() {
         setgameOver(true);
       }
     }
+
+    if (boxes.every((ele) => ele != "") && winner !=="Pending") {
+      setWinner("TIE");
+      setgameOver(true);
+      return;
+    }
   };
 
   const handelBoxClick = (val, index) => {
@@ -66,8 +68,9 @@ function TicTacToe() {
       let temp = boxes.map((ele, i) => (i === index ? turn : ele));
       setBoxes(temp);
       handelTurn();
+      setinvalid([])
     } else {
-      alert("not allowed");
+      setinvalid([index])
     }
   };
 
@@ -88,9 +91,14 @@ function TicTacToe() {
             <div
               key={index}
               className="box"
-              style={
-                winningset.includes(index) ? { background: "lightgreen" } : null
-              }
+              style={{
+                background: winningset.includes(index)
+                  ? "lightgreen" // Give priority to winning boxes
+                  : invalid.includes(index)
+                    ? "red"
+                    : null,
+              }}
+        
               onClick={() => {
                 if (!gameOver) {
                   handelBoxClick(ele, index);
@@ -104,7 +112,7 @@ function TicTacToe() {
         })}
       </div>
       {gameOver && (
-        <div>
+        <div className="game-over">
           Winner: {winner} <br></br>
           <button onClick={newGame}>Reset</button>
         </div>
